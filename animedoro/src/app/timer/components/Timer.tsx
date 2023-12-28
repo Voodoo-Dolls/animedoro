@@ -10,7 +10,7 @@ const Timer = () => {
     isWorking ? setIsWorking(false) : setIsWorking(true);
   };
   return (
-    <>
+    <div className="container mx-auto px-4">
       <p>IsWorking:{`${isWorking}`}</p>
       <p>Timer: {timeConverter(remainingTime)}</p>
       {remainingTime < 1 ? (
@@ -24,7 +24,7 @@ const Timer = () => {
         isWorking={isWorking}
         setIsWorking={setIsWorking}
       />
-    </>
+    </div>
   );
 };
 
