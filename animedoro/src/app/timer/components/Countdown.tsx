@@ -56,18 +56,14 @@ const Countdown = ({
     <div>
       <Buttons
         workTime={workTime}
+        setWorkTime={setWorkTime}
+        setBreakTime={setBreakTime}
         breakTime={breakTime}
+        paused={paused}
         setPaused={setPaused}
         remainingTime={remainingTime}
         setRemainingTime={setRemainingTime}
         isWorking={isWorking}
-      />
-
-      <Settings
-        workTime={workTime}
-        setWorkTime={setWorkTime}
-        breakTime={breakTime}
-        setBreakTime={setBreakTime}
       />
     </div>
   );

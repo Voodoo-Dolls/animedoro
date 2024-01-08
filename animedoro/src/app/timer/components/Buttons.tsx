@@ -1,28 +1,36 @@
 interface Props {
   workTime: number;
+  setWorkTime: Function;
   breakTime: number;
+  setBreakTime: Function;
   isWorking: Boolean;
+  paused: Boolean;
   setPaused: Function;
   remainingTime: number;
   setRemainingTime: Function;
 }
+
+import Settings from "./Settings";
+import { PiPlayPauseLight } from "react-icons/pi";
+import { LuSkipForward } from "react-icons/lu";
+import { GrPowerReset } from "react-icons/gr";
+
 const Buttons = ({
   workTime,
+  setWorkTime,
   breakTime,
+  setBreakTime,
   isWorking,
+  paused,
   setPaused,
   remainingTime,
   setRemainingTime,
 }: Props) => {
-  const handlePause = () => {
-    setPaused(true);
-  };
   const handleResume = () => {
-    setPaused(false);
+    paused ? setPaused(false) : setPaused(true);
   };
   const handleReset = () => {
     setRemainingTime((isWorking ? workTime : breakTime) * 60);
-
     setPaused(true);
   };
   const handleSkip = () => {
@@ -31,11 +39,21 @@ const Buttons = ({
   };
   return (
     <>
-      <button onClick={handleResume}>Resume</button>
-      <button onClick={handlePause}>Pause</button>
-      <button onClick={handleSkip}>Skip</button>
-      <button onClick={handleReset}>Reset</button>
-      <input type="text" />
+      <button onClick={handleResume}>
+        <PiPlayPauseLight />
+      </button>
+      <button onClick={handleSkip}>
+        <LuSkipForward />
+      </button>
+      <button onClick={handleReset}>
+        <GrPowerReset />
+      </button>
+      <Settings
+        workTime={workTime}
+        setWorkTime={setWorkTime}
+        breakTime={breakTime}
+        setBreakTime={setBreakTime}
+      />
     </>
   );
 };
